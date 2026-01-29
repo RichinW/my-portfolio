@@ -1,65 +1,232 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+import { en } from "@/data/i18n/en";
+import { pt } from "@/data/i18n/pt";
+
+const dict = { en, pt };
 
 export default function Home() {
+  const locale = "pt";
+  const t = dict[locale];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="flex min-h-screen flex-col items-center justify-center font-sans bg-[#111] overflow-x-hidden">
+      <div className="w-full h-screen relative justify-between flex items-center">
+        <div className="absolute inset-0 bg-linear-to-r from-[#111111] to-[#111111]/90 z-0"></div>
+        <div className="max-w-4xl pl-32 flex flex-col gap-5 z-10">
+          <div className="flex flex-col w-full text-white">
+            <p className="text-7xl font-google-sans">
+              {t.hero.title1.start}{" "}
+              <span className="text-[#6983F7]">{t.hero.title1.highlight}</span>
+              {t.hero.title1.end}
+            </p>
+            <p className="text-7xl font-google-sans">
+              {t.hero.title2.start}{" "}
+              <span className="text-[#6983F7]">{t.hero.title2.highlight}</span>{" "}
+              {t.hero.title2.end}
+            </p>
+          </div>
+          <p className="text-xl text-white/80">{t.hero.description}</p>
+          <div className="mt-4 flex items-center gap-4 font-google-sans">
+            <Button className="p-6 bg-[#6983F7] hover:bg-[#5a70e0] text-lg">
+              {t.hero.button1}
+            </Button>
+            <Button className="text-white text-lg bg-transparent">
+              {t.hero.button2}
+            </Button>
+          </div>
+        </div>
+        <img
+          src="/programming-vibes.jpg"
+          alt="Programming Vibes"
+          className="h-screen object-cover"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+      </div>
+      <div className="h-screen flex justify-between items-center pl-32 pr-52 w-full bg-[#111] relative">
+        <div className="bg-white/60 size-60 rounded-full blur-3xl absolute top-1/2 right-0 transform translate-x-32 -translate-y-1/2"></div>
+        <div className="text-white font-google-sans">
+          <p className="text-7xl border-b-2 border-[#6983F7] inline-block p-2">
+            {t.about.title}
           </p>
+          <div className="max-w-xl text-xl text-white/80 flex flex-col gap-4 mt-8">
+            {t.about.texts.map((text, index) => (
+              <p key={index}>{text}</p>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="h-full relative">
+          <div className="h-full bg-[#111111]/50 absolute inset-0 "></div>
+          <img className="h-full" src="/foto-minha-v2.jpeg" alt="" />
         </div>
-      </main>
+      </div>
+      <div className="h-screen flex justify-center flex-col items-center pl-32 pr-52 w-full bg-linear-to-br from-[#282828] to-[#111] relative">
+        <div className="text-white font-google-sans">
+          <p className="text-[200px] font-black italic bg-linear-to-r from-white/20 to-[#262626]/20 bg-clip-text text-transparent">
+            Viva Pay
+          </p>
+          <div className="text-xl text-white/80 flex justify-between items-center gap-8">
+            <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#262626]/20" />
+            <p className="italic text-3xl bg-linear-to-r from-white/20 to-[#262626] bg-clip-text text-transparent">
+              {t.case.title}
+            </p>
+            <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#262626]/20" />
+          </div>
+        </div>
+        <div className="bg-linear-to-r pt-30 flex justify-center items-center gap-4 from-white/20 to-[#262626] bg-clip-text text-transparent italic font-google-sans text-xl">
+          <p>Bauru</p>
+          <div className="w-4 h-0.5 bg-linear-to-r from-white/20 to-[#262626]" />
+          <p>2024</p>
+        </div>
+      </div>
+      <div className="h-auto flex flex-col px-32 py-20 gap-20 justify-center items-center font-google-sans w-full bg-[#111] relative">
+        <div className="flex-1 flex justify-between">
+          <div className="flex max-w-3/10 flex-col justify-between">
+            <div className="flex flex-col gap-8">
+              <p className="text-white text-6xl font-medium">
+                {t.project.options[0].title.start}{" "}
+                <span className="text-[#6983F7]">
+                  {t.project.options[0].title.highlight}
+                </span>
+              </p>
+              <p className="text-white/80 text-xl">
+                {t.project.options[0].text}
+              </p>
+            </div>
+            <div className="flex flex-col gap-8">
+              <p className="text-white text-6xl font-medium">
+                {t.project.options[1].title.start}{" "}
+                <span className="text-[#6983F7]">
+                  {t.project.options[1].title.highlight}
+                </span>
+              </p>
+              <p className="text-white/80 text-xl">
+                {t.project.options[1].text}
+              </p>
+            </div>
+          </div>
+          <div className="flex max-w-3/10 flex-col gap-6">
+            <div className="flex flex-col gap-8">
+              <p className="text-white text-6xl font-medium">
+                {t.project.architecture.title}
+              </p>
+              <p className="text-white/80 text-xl">
+                {t.project.architecture.description}
+              </p>
+            </div>
+            {t.project.architecture.texts.map((text, index) => (
+              <p key={index} className="block text-white/80 text-xl">
+                {text}
+              </p>
+            ))}
+          </div>
+          <div className="flex max-w-3/10 flex-col gap-8">
+            <div className="flex flex-col gap-3">
+              <p className="text-white text-6xl font-medium">
+                {t.project.stack.title}
+              </p>
+            </div>
+            {t.project.stack.technologies.map((item, index) => (
+              <div key={index} className="flex flex-col gap-2">
+                <div className="flex items-center gap-3">
+                  <i className={`fa-solid ${item.icon} text-[#6983F7]`}></i>
+                  <p className="text-white text-xl">[ {item.name} ]</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {item.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="text-white/80 text-lg">
+                      {tech}{" "}
+                      {techIndex < item.technologies.length - 1 ? "+" : ""}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="flex flex-col gap-8 max-w-1/3">
+            <div className="text-white flex items-center gap-3 text-6xl font-medium">
+              <p>{t.project.options[2].title.start}</p>
+              <i className="fa-solid fa-star text-[#6983F7] text-5xl"></i>
+            </div>
+            <p className="text-white/80 text-xl">{t.project.options[2].text}</p>
+          </div>
+        </div>
+        <p className="absolute right-0 bottom-5 text-[250px] translate-x-25 font-black italic bg-linear-to-r from-white/20 to-[#262626]/20 bg-clip-text text-transparent">
+          Viva Pay
+        </p>
+      </div>
+      <div className="flex h-screen px-32 overflow-hidden font-google-sans py-20 gap-20 justify-between items-start font-google-sans w-full bg-[#111] relative">
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-8">
+            <p className="text-white text-3xl">{t.contact.contact_info}</p>
+            <div className="flex justify-start items-start gap-3">
+              <div className="size-20 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
+                <i className="fa-regular fa-envelope text-[#6983F7] text-3xl"></i>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-white/40 text-xl">Email</p>
+                <p className="text-white/80 text-xl">
+                  richardwcamargo@gmail.com
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-start items-start gap-3">
+              <div className="size-20 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
+                <i className="fa-solid fa-phone text-[#6983F7] text-3xl"></i>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-white/40 text-xl">Phone</p>
+                <p className="text-white/80 text-xl">+55 (14) 99646-3458</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-8">
+            <p className="text-white text-3xl">{t.contact.social_info}</p>
+            <div className="flex justify-start items-start gap-4">
+              <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                <i className="fa-brands fa-github text-[#6983F7] text-3xl"></i>
+              </div>
+              <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                <i className="fa-brands fa-linkedin-in text-[#6983F7] text-3xl"></i>
+              </div>
+              <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                <i className="fa-brands fa-instagram text-[#6983F7] text-3xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-2/3 h-full bg-linear-to-r from-[#282828] to-[#191919] rounded-lg py-8 px-12 flex flex-col gap-4">
+          <p className="text-white text-5xl">
+            {t.contact.form.title.start}{" "}
+            <span className="text-[#6983F7]">
+              {t.contact.form.title.highlight}
+            </span>
+          </p>
+          <Input
+            className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
+            placeholder={t.contact.form.inputs[0]}
+          />
+          <Input
+            className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
+            placeholder={t.contact.form.inputs[1]}
+          />
+          <Input
+            className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
+            placeholder={t.contact.form.inputs[2]}
+          />
+          <Textarea
+            className="border-none bg-linear-to-r from-[#383838] to-[#212121] placeholder:text-lg p-4 h-full text-white"
+            placeholder={t.contact.form.inputs[3]}
+          ></Textarea>
+          <Button className="bg-[#6983F7] text-white rounded-sm h-12 w-full">
+            {t.contact.form.button}
+          </Button>
+        </div>
+        <div className="bg-white/60 size-60 rounded-full blur-3xl absolute bottom-0 left-2/12 transform -translate-x-32 translate-y-30"></div>
+      </div>
     </div>
   );
 }
