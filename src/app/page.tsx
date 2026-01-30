@@ -1,33 +1,78 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import { en } from "@/data/i18n/en";
 import { pt } from "@/data/i18n/pt";
+import { useEffect, useState } from "react";
 
 const dict = { en, pt };
 
 export default function Home() {
-  const locale = "pt";
+
+  const [formEmail, setFormEmail] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  })
+  const [locale, setLocale] = useState<"en" | "pt">("en");
+  const [isFading, setIsFading] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const t = dict[locale];
+  const to = "richardwcamargo@gmail.com";
+  const subject = encodeURIComponent(formEmail.subject);
+  const body = encodeURIComponent(
+    `Olá, meu nome é ${formEmail.name}.\nEmail: ${formEmail.email}\n\n${formEmail.message}\n\n(enviado pelo seu portfólio)`
+  );
+
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        setShowHeader(false);
+      } else {
+        setShowHeader(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  function toggleLanguage() {
+    setIsFading(true);
+
+    setTimeout(() => {
+      setLocale(locale === "pt" ? "en" : "pt");
+      setIsFading(false);
+    }, 200);
+  }
 
   return (
     <>
-      <div className="fixed px-10 z-10 top-0 left-0 w-screen h-20 flex justify-between font-google-sans items-center">
+      <div className={`fixed px-10 z-10 top-0 transition-all left-0 w-screen h-20 flex justify-between font-google-sans items-center duration-300
+    ${showHeader ? "translate-y-0" : "-translate-y-full"}`}>
         <p className="text-white text-2xl">RichardWOC</p>
         <div className="flex items-center gap-8 text-xl text-white">
-          <p>Hero</p>
-          <p>About</p>
-          <p>Case</p>
-          <p>Project</p>
-          <p>Contact</p>
-          <p>Outher</p>
-          <div className="border-2 border-white/30 py-2 px-3 rounded-md">
-            <p>View Github</p>
-          </div>
+          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#hero">{t.header[0]}</a>
+          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#about">{t.header[1]}</a>
+          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#case">{t.header[2]}</a>
+          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#contact">{t.header[3]}</a>
+          <Button onClick={() => toggleLanguage()} className="bg-transparent cursor-pointer hover:bg-transparent text-lg flex items-center gap-2"><p>{t.header[4]}</p>{locale === "pt" ? <img className="w-6" src="/flags/br.svg" alt="Brazil Flag" /> : <img className="w-6" src="/flags/us.svg" alt="US Flag" />}</Button>
+          <a href="https://github.com/RichinW" className="border-2 bg-transparent hover:bg-[#111]/50 border-white/30 cursor-pointer p-2 flex items-center text-lg justify-center gap-2 rounded-md">
+            <i className="fa-brands fa-github"></i>
+            <p>{t.header[5]}</p>
+          </a>
         </div>
       </div>
-      <div className="flex min-h-screen flex-col items-center justify-center font-google-sans bg-[#111] overflow-x-hidden">
+      <div id="hero" className={`flex scroll-mt-20 min-h-screen flex-col transition-all items-center justify-center font-google-sans bg-[#111] overflow-x-hidden ${isFading ? "opacity-90 blur-in-2xl" : "opacity-100"
+        }`}>
         <div className="w-full h-screen relative justify-between flex items-center">
           <div className="absolute inset-0 bg-linear-to-r from-[#111111] to-[#111111]/90 z-0"></div>
           <div className="max-w-4xl pl-32 flex flex-col gap-5 z-10">
@@ -63,7 +108,7 @@ export default function Home() {
             className="h-screen object-cover"
           />
         </div>
-        <div className="h-screen flex justify-between items-center pl-32 pr-52 w-full bg-[#111] relative">
+        <div id="about" className="h-screen scroll-mt-20 flex justify-between items-center pl-32 pr-52 w-full bg-[#111] relative">
           <div className="bg-white/60 size-60 rounded-full blur-3xl absolute top-1/2 right-0 transform translate-x-32 -translate-y-1/2"></div>
           <div className="text-white">
             <p className="text-7xl border-b-2 border-[#6983F7] inline-block p-2">
@@ -80,22 +125,22 @@ export default function Home() {
             <img className="h-full" src="/foto-minha-v2.jpeg" alt="" />
           </div>
         </div>
-        <div className="h-screen flex justify-center flex-col items-center pl-32 pr-52 w-full bg-linear-to-br from-[#282828] to-[#111] relative">
+        <div id="case" className="h-screen scroll-mt-20 flex justify-center flex-col items-center pl-32 pr-52 w-full bg-linear-to-br from-[#282828] to-[#111] relative">
           <div className="text-white">
-            <p className="text-[200px] font-black italic bg-linear-to-r from-white/20 to-[#262626]/20 bg-clip-text text-transparent">
+            <p className="text-[200px] font-black italic bg-linear-to-r from-white/30 to-[#242424]/50 bg-clip-text text-transparent">
               Viva Pay
             </p>
             <div className="text-xl text-white/80 flex justify-between items-center gap-8">
-              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#262626]/20" />
-              <p className="italic text-3xl bg-linear-to-r from-white/20 to-[#262626] bg-clip-text text-transparent">
+              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
+              <p className="italic text-3xl bg-linear-to-r from-white/30 to-[#333333]/50 bg-clip-text text-transparent">
                 {t.case.title}
               </p>
-              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#262626]/20" />
+              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#242424]/50" />
             </div>
           </div>
-          <div className="bg-linear-to-r pt-30 flex justify-center items-center gap-4 from-white/20 to-[#262626] bg-clip-text text-transparent italic text-xl">
+          <div className="bg-linear-to-r pt-30 flex justify-center items-center gap-4 from-white/30 to-[#3a3a3a]/60 bg-clip-text text-transparent italic text-xl">
             <p>Bauru</p>
-            <div className="w-4 h-0.5 bg-linear-to-r from-white/20 to-[#262626]" />
+            <div className="w-4 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
             <p>2024</p>
           </div>
         </div>
@@ -179,16 +224,16 @@ export default function Home() {
             Viva Pay
           </p>
         </div>
-        <div className="flex h-screen px-32 overflow-hidden py-20 gap-20 justify-between items-start w-full bg-[#111] relative">
+        <div id="contact" className="flex scroll-mt-20 h-screen px-32 overflow-hidden py-20 gap-20 justify-between items-start w-full bg-[#111] relative">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-8">
-              <p className="text-white text-3xl">{t.contact.contact_info}</p>
+              <p className="text-white text-3xl">{t.contact.contact_info.title}</p>
               <div className="flex justify-start items-start gap-3">
                 <div className="size-20 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
                   <i className="fa-regular fa-envelope text-[#6983F7] text-3xl"></i>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-white/40 text-xl">Email</p>
+                  <p className="text-white/40 text-xl">{t.contact.contact_info.infos[0]}</p>
                   <p className="text-white/80 text-xl">
                     richardwcamargo@gmail.com
                   </p>
@@ -199,7 +244,7 @@ export default function Home() {
                   <i className="fa-solid fa-phone text-[#6983F7] text-3xl"></i>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-white/40 text-xl">Phone</p>
+                  <p className="text-white/40 text-xl">{t.contact.contact_info.infos[1]}</p>
                   <p className="text-white/80 text-xl">+55 (14) 99646-3458</p>
                 </div>
               </div>
@@ -207,15 +252,21 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               <p className="text-white text-3xl">{t.contact.social_info}</p>
               <div className="flex justify-start items-start gap-4">
-                <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
-                  <i className="fa-brands fa-github text-[#6983F7] text-3xl"></i>
-                </div>
-                <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
-                  <i className="fa-brands fa-linkedin-in text-[#6983F7] text-3xl"></i>
-                </div>
-                <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
-                  <i className="fa-brands fa-instagram text-[#6983F7] text-3xl"></i>
-                </div>
+                <a href="https://github.com/RichinW">
+                  <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                    <i className="fa-brands fa-github text-[#6983F7] text-3xl"></i>
+                  </div>
+                </a>
+                <a href="https://www.linkedin.com/in/richard-camargo-483079328/">
+                  <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                    <i className="fa-brands fa-linkedin-in text-[#6983F7] text-3xl"></i>
+                  </div>
+                </a>
+                <a href="https://www.instagram.com/walacerichard/">
+                  <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                    <i className="fa-brands fa-instagram text-[#6983F7] text-3xl"></i>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -229,22 +280,31 @@ export default function Home() {
             <Input
               className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
               placeholder={t.contact.form.inputs[0]}
+              value={formEmail.name}
+              onChange={(e) => setFormEmail(prev => ({ ...prev, name: e.target.value }))}
             />
             <Input
               className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
               placeholder={t.contact.form.inputs[1]}
+              value={formEmail.email}
+              onChange={(e) => setFormEmail(prev => ({ ...prev, email: e.target.value }))}
+              type="email"
             />
             <Input
               className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
               placeholder={t.contact.form.inputs[2]}
+              value={formEmail.subject}
+              onChange={(e) => setFormEmail(prev => ({ ...prev, subject: e.target.value }))}
             />
             <Textarea
-              className="border-none bg-linear-to-r from-[#383838] to-[#212121] placeholder:text-lg p-4 h-full text-white"
+              className="border-none bg-linear-to-r from-[#383838] to-[#212121] text-lg placeholder:text-lg p-4 h-full text-white"
               placeholder={t.contact.form.inputs[3]}
+              value={formEmail.message}
+              onChange={(e) => setFormEmail(prev => ({ ...prev, message: e.target.value }))}
             ></Textarea>
-            <Button className="bg-[#6983F7] text-white rounded-sm h-12 w-full">
+            <a href={`mailto:${to}?subject=${subject}&body=${body}`} className="bg-[#6983F7] flex justify-center items-center p-3 transition-colors hover:bg-[#5a70e0] text-white rounded-sm h-12 w-full">
               {t.contact.form.button}
-            </Button>
+            </a>
           </div>
           <div className="bg-white/60 size-60 rounded-full blur-3xl absolute bottom-0 left-2/12 transform -translate-x-32 translate-y-30"></div>
         </div>

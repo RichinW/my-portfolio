@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: "Google Sans";
   src: url("/fonts/GoogleSans-Regular.woff2") format("ttf");
@@ -140,6 +144,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

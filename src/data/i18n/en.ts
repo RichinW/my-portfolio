@@ -1,5 +1,8 @@
 
 export const en = {
+  header: [
+    "Hero", "About", "Case", "Contact", "Language", "View Github"
+  ],
   hero: {
     title1: {
       start: "Building",
@@ -84,7 +87,10 @@ export const en = {
     },
   },
   contact: {
-    contact_info: "Contact Info",
+    contact_info: {
+      title: "Contact Info",
+      infos: ["Email", "Phone"]
+    },
     social_info: "Social Info",
     form: {
       title: {
