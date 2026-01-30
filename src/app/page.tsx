@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,13 +10,12 @@ import { useEffect, useState } from "react";
 const dict = { en, pt };
 
 export default function Home() {
-
   const [formEmail, setFormEmail] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
-  })
+    message: "",
+  });
   const [locale, setLocale] = useState<"en" | "pt">("en");
   const [isFading, setIsFading] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
@@ -25,7 +24,7 @@ export default function Home() {
   const to = "richardwcamargo@gmail.com";
   const subject = encodeURIComponent(formEmail.subject);
   const body = encodeURIComponent(
-    `Olá, meu nome é ${formEmail.name}.\nEmail: ${formEmail.email}\n\n${formEmail.message}\n\n(enviado pelo seu portfólio)`
+    `Olá, meu nome é ${formEmail.name}.\nEmail: ${formEmail.email}\n\n${formEmail.message}\n\n(enviado pelo seu portfólio)`,
   );
 
   useEffect(() => {
@@ -56,23 +55,62 @@ export default function Home() {
 
   return (
     <>
-      <div className={`fixed px-10 z-10 top-0 transition-all left-0 w-screen h-20 flex justify-between font-google-sans items-center duration-300
-    ${showHeader ? "translate-y-0" : "-translate-y-full"}`}>
+      <div
+        className={`fixed px-10 z-10 top-0 transition-all left-0 w-screen h-20 flex justify-between font-google-sans items-center duration-300
+    ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
+      >
         <p className="text-white text-2xl">RichardWOC</p>
         <div className="flex items-center gap-8 text-xl text-white">
-          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#hero">{t.header[0]}</a>
-          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#about">{t.header[1]}</a>
-          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#case">{t.header[2]}</a>
-          <a className="bg-transparent text-lg hover:bg-transparent font-medium px-3" href="#contact">{t.header[3]}</a>
-          <Button onClick={() => toggleLanguage()} className="bg-transparent cursor-pointer hover:bg-transparent text-lg flex items-center gap-2"><p>{t.header[4]}</p>{locale === "pt" ? <img className="w-6" src="/flags/br.svg" alt="Brazil Flag" /> : <img className="w-6" src="/flags/us.svg" alt="US Flag" />}</Button>
-          <a href="https://github.com/RichinW" className="border-2 bg-transparent hover:bg-[#111]/50 border-white/30 cursor-pointer p-2 flex items-center text-lg justify-center gap-2 rounded-md">
+          <a
+            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            href="#hero"
+          >
+            {t.header[0]}
+          </a>
+          <a
+            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            href="#about"
+          >
+            {t.header[1]}
+          </a>
+          <a
+            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            href="#case"
+          >
+            {t.header[2]}
+          </a>
+          <a
+            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            href="#contact"
+          >
+            {t.header[3]}
+          </a>
+          <Button
+            onClick={() => toggleLanguage()}
+            className="bg-transparent cursor-pointer hover:bg-transparent text-lg flex items-center gap-2"
+          >
+            <p>{t.header[4]}</p>
+            {locale === "pt" ? (
+              <img className="w-6" src="/flags/br.svg" alt="Brazil Flag" />
+            ) : (
+              <img className="w-6" src="/flags/us.svg" alt="US Flag" />
+            )}
+          </Button>
+          <a
+            href="https://github.com/RichinW"
+            className="border-2 bg-transparent hover:bg-[#111]/50 border-white/30 cursor-pointer p-2 flex items-center text-lg justify-center gap-2 rounded-md"
+          >
             <i className="fa-brands fa-github"></i>
             <p>{t.header[5]}</p>
           </a>
         </div>
       </div>
-      <div id="hero" className={`flex scroll-mt-20 min-h-screen flex-col transition-all items-center justify-center font-google-sans bg-[#111] overflow-x-hidden ${isFading ? "opacity-90 blur-in-2xl" : "opacity-100"
-        }`}>
+      <div
+        id="hero"
+        className={`flex scroll-mt-20 min-h-screen flex-col transition-all items-center justify-center font-google-sans bg-[#111] overflow-x-hidden ${
+          isFading ? "opacity-90 blur-in-2xl" : "opacity-100"
+        }`}
+      >
         <div className="w-full h-screen relative justify-between flex items-center">
           <div className="absolute inset-0 bg-linear-to-r from-[#111111] to-[#111111]/90 z-0"></div>
           <div className="max-w-4xl pl-32 flex flex-col gap-5 z-10">
@@ -94,12 +132,12 @@ export default function Home() {
             </div>
             <p className="text-xl text-white/80">{t.hero.description}</p>
             <div className="mt-4 flex items-center gap-4">
-              <Button className="p-6 bg-[#6983F7] hover:bg-[#5a70e0] text-lg">
+              <a href="#case" className="px-6 py-4 rounded-md text-white font-medium bg-[#6983F7] hover:bg-[#5a70e0] text-lg">
                 {t.hero.button1}
-              </Button>
-              <Button className="text-white text-lg bg-transparent">
+              </a>
+              <a href="#contact" className="text-white font-medium text-lg">
                 {t.hero.button2}
-              </Button>
+              </a>
             </div>
           </div>
           <img
@@ -108,7 +146,10 @@ export default function Home() {
             className="h-screen object-cover"
           />
         </div>
-        <div id="about" className="h-screen scroll-mt-20 flex justify-between items-center pl-32 pr-52 w-full bg-[#111] relative">
+        <div
+          id="about"
+          className="h-screen scroll-mt-20 flex justify-between items-center pl-32 pr-52 w-full bg-[#111] relative"
+        >
           <div className="bg-white/60 size-60 rounded-full blur-3xl absolute top-1/2 right-0 transform translate-x-32 -translate-y-1/2"></div>
           <div className="text-white">
             <p className="text-7xl border-b-2 border-[#6983F7] inline-block p-2">
@@ -125,7 +166,10 @@ export default function Home() {
             <img className="h-full" src="/foto-minha-v2.jpeg" alt="" />
           </div>
         </div>
-        <div id="case" className="h-screen scroll-mt-20 flex justify-center flex-col items-center pl-32 pr-52 w-full bg-linear-to-br from-[#282828] to-[#111] relative">
+        <div
+          id="case"
+          className="h-screen scroll-mt-20 flex justify-center flex-col items-center pl-32 pr-52 w-full bg-linear-to-br from-[#282828] to-[#111] relative"
+        >
           <div className="text-white">
             <p className="text-[200px] font-black italic bg-linear-to-r from-white/30 to-[#242424]/50 bg-clip-text text-transparent">
               Viva Pay
@@ -224,16 +268,23 @@ export default function Home() {
             Viva Pay
           </p>
         </div>
-        <div id="contact" className="flex scroll-mt-20 h-screen px-32 overflow-hidden py-20 gap-20 justify-between items-start w-full bg-[#111] relative">
+        <div
+          id="contact"
+          className="flex scroll-mt-20 h-screen px-32 overflow-hidden py-20 gap-20 justify-between items-start w-full bg-[#111] relative"
+        >
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-8">
-              <p className="text-white text-3xl">{t.contact.contact_info.title}</p>
+              <p className="text-white text-3xl">
+                {t.contact.contact_info.title}
+              </p>
               <div className="flex justify-start items-start gap-3">
                 <div className="size-20 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
                   <i className="fa-regular fa-envelope text-[#6983F7] text-3xl"></i>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-white/40 text-xl">{t.contact.contact_info.infos[0]}</p>
+                  <p className="text-white/40 text-xl">
+                    {t.contact.contact_info.infos[0]}
+                  </p>
                   <p className="text-white/80 text-xl">
                     richardwcamargo@gmail.com
                   </p>
@@ -244,7 +295,9 @@ export default function Home() {
                   <i className="fa-solid fa-phone text-[#6983F7] text-3xl"></i>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-white/40 text-xl">{t.contact.contact_info.infos[1]}</p>
+                  <p className="text-white/40 text-xl">
+                    {t.contact.contact_info.infos[1]}
+                  </p>
                   <p className="text-white/80 text-xl">+55 (14) 99646-3458</p>
                 </div>
               </div>
@@ -281,28 +334,39 @@ export default function Home() {
               className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
               placeholder={t.contact.form.inputs[0]}
               value={formEmail.name}
-              onChange={(e) => setFormEmail(prev => ({ ...prev, name: e.target.value }))}
+              onChange={(e) =>
+                setFormEmail((prev) => ({ ...prev, name: e.target.value }))
+              }
             />
             <Input
               className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
               placeholder={t.contact.form.inputs[1]}
               value={formEmail.email}
-              onChange={(e) => setFormEmail(prev => ({ ...prev, email: e.target.value }))}
+              onChange={(e) =>
+                setFormEmail((prev) => ({ ...prev, email: e.target.value }))
+              }
               type="email"
             />
             <Input
               className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
               placeholder={t.contact.form.inputs[2]}
               value={formEmail.subject}
-              onChange={(e) => setFormEmail(prev => ({ ...prev, subject: e.target.value }))}
+              onChange={(e) =>
+                setFormEmail((prev) => ({ ...prev, subject: e.target.value }))
+              }
             />
             <Textarea
               className="border-none bg-linear-to-r from-[#383838] to-[#212121] text-lg placeholder:text-lg p-4 h-full text-white"
               placeholder={t.contact.form.inputs[3]}
               value={formEmail.message}
-              onChange={(e) => setFormEmail(prev => ({ ...prev, message: e.target.value }))}
+              onChange={(e) =>
+                setFormEmail((prev) => ({ ...prev, message: e.target.value }))
+              }
             ></Textarea>
-            <a href={`mailto:${to}?subject=${subject}&body=${body}`} className="bg-[#6983F7] flex justify-center items-center p-3 transition-colors hover:bg-[#5a70e0] text-white rounded-sm h-12 w-full">
+            <a
+              href={`mailto:${to}?subject=${subject}&body=${body}`}
+              className="bg-[#6983F7] flex justify-center items-center p-3 transition-colors hover:bg-[#5a70e0] text-white rounded-sm h-12 w-full"
+            >
               {t.contact.form.button}
             </a>
           </div>
