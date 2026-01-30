@@ -56,49 +56,49 @@ export default function Home() {
   return (
     <>
       <div
-        className={`fixed px-3 md:px-6 lg:px-10 z-10 top-0 md:flex hidden transition-all left-0 w-screen h-12 lg:h-20 justify-between font-google-sans items-center duration-300
+        className={`fixed px-3 md:px-6 lg:px-10 z-100 top-0 flex bg-[#111]/10 transition-all left-0 w-screen h-12 lg:h-20 justify-between font-google-sans items-center duration-300
     ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
       >
         <p className="text-white text-lg md:text-xl lg:text-2xl">RichardWOC</p>
         <div className="flex items-center gap-8 text-xl text-white">
           <a
-            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            className="bg-transparent lg:block hidden text-lg hover:bg-transparent font-medium px-3"
             href="#hero"
           >
             {t.header[0]}
           </a>
           <a
-            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            className="bg-transparent lg:block hidden text-lg hover:bg-transparent font-medium px-3"
             href="#about"
           >
             {t.header[1]}
           </a>
           <a
-            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            className="bg-transparent lg:block hidden text-lg hover:bg-transparent font-medium px-3"
             href="#case"
           >
             {t.header[2]}
           </a>
           <a
-            className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
+            className="bg-transparent lg:block hidden text-lg hover:bg-transparent font-medium px-3"
             href="#contact"
           >
             {t.header[3]}
           </a>
           <Button
             onClick={() => toggleLanguage()}
-            className="bg-transparent cursor-pointer hover:bg-transparent text-lg flex items-center gap-2"
+            className="bg-transparent cursor-pointer hover:bg-transparent lg:text-lg text-sm flex items-center gap-2"
           >
             <p>{t.header[4]}</p>
             {locale === "pt" ? (
-              <img className="w-6" src="/flags/br.svg" alt="Brazil Flag" />
+              <img className="lg:w-6 w-4" src="/flags/br.svg" alt="Brazil Flag" />
             ) : (
-              <img className="w-6" src="/flags/us.svg" alt="US Flag" />
+              <img className="lg:w-6 w-4" src="/flags/us.svg" alt="US Flag" />
             )}
           </Button>
           <a
             href="https://github.com/RichinW"
-            className="border-2 bg-transparent hover:bg-[#111]/50 border-white/30 cursor-pointer p-2 flex items-center text-lg justify-center gap-2 rounded-md"
+            className="border-2 bg-transparent lg:block hidden hover:bg-[#111]/50 border-white/30 cursor-pointer p-2 flex items-center text-lg justify-center gap-2 rounded-md"
           >
             <i className="fa-brands fa-github"></i>
             <p>{t.header[5]}</p>
@@ -170,7 +170,7 @@ export default function Home() {
             </div>
           </div>
           <div className="lg:h-full lg:w-auto size-full inset-0 absolute lg:relative">
-            <div className="h-full lg:from-[#111]/70 lg:to-[#111]/70 bg-linear-to-r from-[#111111] to-[#111111]/90 absolute inset-0 "></div>
+            <div className="h-full lg:from-[#111]/70 lg:to-[#111]/70 bg-linear-to-r from-[#111111]/90 to-[#111111]/80 absolute inset-0 "></div>
             <img className="h-full object-cover" src="/foto-minha-v2.jpeg" alt="" />
           </div>
         </div>
