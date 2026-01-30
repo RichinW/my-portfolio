@@ -1,4 +1,7 @@
 export const pt = {
+  header: [
+    "Início", "Sobre", "Estudo de caso", "Contato", "Idioma", "Ver Github"
+  ],
   hero: {
     title1: {
       start: "Criando Soluções para o",
@@ -30,21 +33,21 @@ export const pt = {
     options: [
       {
         title: {
-            start: "Problema",
-            highlight: "?",
+          start: "Problema",
+          highlight: "?",
         },
         text: "Um evento com muitas pessoas e sem sistema para controlar clientes, despesas ou receitas, apenas folhas de papel que inspiram nenhuma confiança. Um verdadeiro caos operacional em uma das maiores escolas do estado de São Paulo.",
       },
       {
         title: {
-            start: "Solução",
-            highlight: "!",
+          start: "Solução",
+          highlight: "!",
         },
         text: "Um sistema integrado para compras feitas nas lojas do evento e controle de clientes e créditos. Foi essa nossa solução com a criação do Viva Pay, um sistema que atendeu mais de 5.000 clientes em um evento de três dias no início."
       },
       {
         title: {
-            start: "Resultado",
+          start: "Resultado",
         },
         text: "O projeto foi concluído dois meses antes do evento e utilizado com sucesso em um ambiente de produção real. Durante três dias, o sistema atendeu mais de 5.000 clientes, lidando com transações reais e fluxos operacionais. O ciclo completo de desenvolvimento levou aproximadamente seis meses, desde o conceito inicial até a entrega final.",
       },
@@ -83,7 +86,10 @@ export const pt = {
     },
   },
   contact: {
-    contact_info: "Informações de Contato",
+    contact_info: {
+      title: "Informações de Contato",
+      infos: ["Email", "Telefone"]
+    },
     social_info: "Informações Sociais",
     form: {
       title: {
