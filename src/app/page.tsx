@@ -98,7 +98,7 @@ export default function Home() {
           </Button>
           <a
             href="https://github.com/RichinW"
-            className="border-2 bg-transparent lg:block hidden hover:bg-[#111]/50 border-white/30 cursor-pointer p-2 flex items-center text-lg justify-center gap-2 rounded-md"
+            className="border-2 bg-transparent lg:flex hidden hover:bg-[#111]/50 border-white/30 cursor-pointer p-2 items-center text-lg justify-center gap-2 rounded-md"
           >
             <i className="fa-brands fa-github"></i>
             <p>{t.header[5]}</p>
@@ -183,11 +183,11 @@ export default function Home() {
               Viva Pay
             </p>
             <div className="text-white/80 flex justify-between items-center">
-              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
-              <p className="italic lg:text-3xl md:text-xl text-lg bg-linear-to-r from-white/30 to-[#333333]/50 bg-clip-text text-transparent">
+              <div className="w-1/10 lg:w-1/4 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
+              <p className="italic lg:text-3xl md:text-xl text-md bg-linear-to-r from-white/30 to-[#333333]/50 bg-clip-text text-transparent">
                 {t.case.title}
               </p>
-              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#242424]/50" />
+              <div className="w-1/10 lg:w-1/4 h-0.5 bg-linear-to-r from-white/20 to-[#242424]/50" />
             </div>
           </div>
           <div className="bg-linear-to-r lg:pt-30 md:pt-20 pt-10 flex justify-center items-center gap-4 from-white/30 to-[#3a3a3a]/60 bg-clip-text text-transparent italic lg:text-xl md:text-lg text-sm">
