@@ -364,7 +364,7 @@ export default function Home() {
               }
             ></Textarea>
             <a
-              href={`mailto:${to}?subject=${subject}&body=${body}`}
+              href={`https://mail.google.com/mail/?view=cm&to=${to}&su=${subject}&body=${body}`}
               className="bg-[#6983F7] flex justify-center items-center p-3 transition-colors hover:bg-[#5a70e0] text-white rounded-sm h-12 w-full"
             >
               {t.contact.form.button}
