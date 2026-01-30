@@ -136,7 +136,7 @@ export default function Home() {
             <div className="mt-4 flex items-center gap-4">
               <a
                 href="#case"
-                className="lg:px-6 md:px-4 px-2 md:py-3 py-1 lg:py-4 rounded-md text-white font-medium bg-[#6983F7] hover:bg-[#5a70e0] lg:text-lg md:text-md text-sm"
+                className="lg:px-6 md:px-4 px-2 md:py-3 py-2 lg:py-4 lg:rounded-md rounded-sm text-white font-medium bg-[#6983F7] hover:bg-[#5a70e0] lg:text-lg md:text-md text-sm"
               >
                 {t.hero.button1}
               </a>
@@ -151,15 +151,15 @@ export default function Home() {
           <img
             src="/programming-vibes.jpg"
             alt="Programming Vibes"
-            className="h-screen object-cover"
+            className="h-screen object-cover w-1/4 lg:blur-sm blur-md"
           />
         </div>
         <div
           id="about"
-          className="h-screen scroll-mt-20 flex justify-between items-center lg:pl-32 md:pl-16 pl-6 lg:pr-52 w-full bg-[#111] relative"
+          className="h-screen scroll-mt-20 flex justify-between items-center lg:pl-32 md:pl-16 lg:pr-52 w-full bg-[#111] relative"
         >
           <div className="bg-white/60 md:block hidden size-60 rounded-full blur-3xl absolute top-1/2 right-0 transform translate-x-32 -translate-y-1/2"></div>
-          <div className="text-white">
+          <div className="text-white lg:z-0 z-10 pl-6 lg:max-w-full max-w-72">
             <p className="text-4xl md:text-6xl lg:text-7xl border-b-2 border-[#6983F7] inline-block p-2">
               {t.about.title}
             </p>
@@ -169,9 +169,9 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="h-full relative">
-            <div className="h-full bg-[#111111]/50 absolute inset-0 "></div>
-            <img className="h-full" src="/foto-minha-v2.jpeg" alt="" />
+          <div className="lg:h-full lg:w-auto size-full inset-0 absolute lg:relative">
+            <div className="h-full lg:from-[#111]/70 lg:to-[#111]/70 bg-linear-to-r from-[#111111] to-[#111111]/90 absolute inset-0 "></div>
+            <img className="h-full object-cover" src="/foto-minha-v2.jpeg" alt="" />
           </div>
         </div>
         <div
