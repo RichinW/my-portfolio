@@ -56,10 +56,10 @@ export default function Home() {
   return (
     <>
       <div
-        className={`fixed px-10 z-10 top-0 transition-all left-0 w-screen h-20 flex justify-between font-google-sans items-center duration-300
+        className={`fixed px-3 md:px-6 lg:px-10 z-10 top-0 md:flex hidden transition-all left-0 w-screen h-12 lg:h-20 justify-between font-google-sans items-center duration-300
     ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
       >
-        <p className="text-white text-2xl">RichardWOC</p>
+        <p className="text-white text-lg md:text-xl lg:text-2xl">RichardWOC</p>
         <div className="flex items-center gap-8 text-xl text-white">
           <a
             className="bg-transparent text-lg hover:bg-transparent font-medium px-3"
@@ -113,16 +113,16 @@ export default function Home() {
       >
         <div className="w-full h-screen relative justify-between flex items-center">
           <div className="absolute inset-0 bg-linear-to-r from-[#111111] to-[#111111]/90 z-0"></div>
-          <div className="max-w-4xl pl-32 flex flex-col gap-5 z-10">
+          <div className="max-w-4xl pl-6 md:pl-16 lg:pl-32 flex flex-col gap-5 z-10">
             <div className="flex flex-col w-full text-white">
-              <p className="text-7xl">
+              <p className="text-4xl md:text-6xl lg:text-7xl">
                 {t.hero.title1.start}{" "}
                 <span className="text-[#6983F7]">
                   {t.hero.title1.highlight}
                 </span>
                 {t.hero.title1.end}
               </p>
-              <p className="text-7xl">
+              <p className="text-4xl md:text-6xl lg:text-7xl">
                 {t.hero.title2.start}{" "}
                 <span className="text-[#6983F7]">
                   {t.hero.title2.highlight}
@@ -130,12 +130,20 @@ export default function Home() {
                 {t.hero.title2.end}
               </p>
             </div>
-            <p className="text-xl text-white/80">{t.hero.description}</p>
+            <p className="lg:text-xl md:text-lg text-sm text-white/80">
+              {t.hero.description}
+            </p>
             <div className="mt-4 flex items-center gap-4">
-              <a href="#case" className="px-6 py-4 rounded-md text-white font-medium bg-[#6983F7] hover:bg-[#5a70e0] text-lg">
+              <a
+                href="#case"
+                className="lg:px-6 md:px-4 px-2 md:py-3 py-1 lg:py-4 rounded-md text-white font-medium bg-[#6983F7] hover:bg-[#5a70e0] lg:text-lg md:text-md text-sm"
+              >
                 {t.hero.button1}
               </a>
-              <a href="#contact" className="text-white font-medium text-lg">
+              <a
+                href="#contact"
+                className="text-white font-medium lg:text-lg md:text-md text-sm"
+              >
                 {t.hero.button2}
               </a>
             </div>
@@ -148,14 +156,14 @@ export default function Home() {
         </div>
         <div
           id="about"
-          className="h-screen scroll-mt-20 flex justify-between items-center pl-32 pr-52 w-full bg-[#111] relative"
+          className="h-screen scroll-mt-20 flex justify-between items-center lg:pl-32 md:pl-16 pl-6 lg:pr-52 w-full bg-[#111] relative"
         >
-          <div className="bg-white/60 size-60 rounded-full blur-3xl absolute top-1/2 right-0 transform translate-x-32 -translate-y-1/2"></div>
+          <div className="bg-white/60 md:block hidden size-60 rounded-full blur-3xl absolute top-1/2 right-0 transform translate-x-32 -translate-y-1/2"></div>
           <div className="text-white">
-            <p className="text-7xl border-b-2 border-[#6983F7] inline-block p-2">
+            <p className="text-4xl md:text-6xl lg:text-7xl border-b-2 border-[#6983F7] inline-block p-2">
               {t.about.title}
             </p>
-            <div className="max-w-xl text-xl text-white/80 flex flex-col gap-4 mt-8">
+            <div className="max-w-xl lg:text-xl md:text-lg text-sm text-white/80 flex flex-col gap-4 mt-8">
               {t.about.texts.map((text, index) => (
                 <p key={index}>{text}</p>
               ))}
@@ -168,78 +176,81 @@ export default function Home() {
         </div>
         <div
           id="case"
-          className="h-screen scroll-mt-20 flex justify-center flex-col items-center pl-32 pr-52 w-full bg-linear-to-br from-[#282828] to-[#111] relative"
+          className="h-screen scroll-mt-20 flex justify-center flex-col items-center w-full bg-linear-to-br from-[#282828] to-[#111] relative"
         >
           <div className="text-white">
-            <p className="text-[200px] font-black italic bg-linear-to-r from-white/30 to-[#242424]/50 bg-clip-text text-transparent">
+            <p className="lg:text-[200px] md:text-8xl text-7xl text-center font-black italic bg-linear-to-r from-white/30 to-[#242424]/50 bg-clip-text text-transparent">
               Viva Pay
             </p>
-            <div className="text-xl text-white/80 flex justify-between items-center gap-8">
+            <div className="text-white/80 flex justify-between items-center">
               <div className="w-2/10 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
-              <p className="italic text-3xl bg-linear-to-r from-white/30 to-[#333333]/50 bg-clip-text text-transparent">
+              <p className="italic lg:text-3xl md:text-xl text-lg bg-linear-to-r from-white/30 to-[#333333]/50 bg-clip-text text-transparent">
                 {t.case.title}
               </p>
               <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#242424]/50" />
             </div>
           </div>
-          <div className="bg-linear-to-r pt-30 flex justify-center items-center gap-4 from-white/30 to-[#3a3a3a]/60 bg-clip-text text-transparent italic text-xl">
+          <div className="bg-linear-to-r lg:pt-30 md:pt-20 pt-10 flex justify-center items-center gap-4 from-white/30 to-[#3a3a3a]/60 bg-clip-text text-transparent italic lg:text-xl md:text-lg text-sm">
             <p>Bauru</p>
-            <div className="w-4 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
+            <div className="w-4 md:h-0.5 h-[0.1px]  bg-linear-to-r from-white/30 to-[#242424]/50" />
             <p>2024</p>
           </div>
         </div>
-        <div className="h-auto flex flex-col px-32 py-20 gap-20 justify-center items-center w-full bg-[#111] relative">
-          <div className="flex-1 flex justify-between">
-            <div className="flex max-w-3/10 flex-col justify-between">
-              <div className="flex flex-col gap-8">
-                <p className="text-white text-6xl font-medium">
+        <div className="h-auto flex flex-col px-6 md:px-16 lg:px-32 lg:py-20 md:py-10 py-4 gap-20 justify-center items-center w-full bg-[#111] relative">
+          <div className="flex-1 md:flex-row flex-col  flex justify-between">
+            <div className="flex lg:max-w-3/10  flex-col justify-between">
+              <div className="flex flex-col lg:gap-8 gap-4 lg:mb-0 mb-10">
+                <p className="text-white lg:text-6xl md:text-5xl text-4xl font-medium">
                   {t.project.options[0].title.start}{" "}
                   <span className="text-[#6983F7]">
                     {t.project.options[0].title.highlight}
                   </span>
                 </p>
-                <p className="text-white/80 text-xl">
+                <p className="text-white/80 lg:text-xl md:text-lg text-sm">
                   {t.project.options[0].text}
                 </p>
               </div>
-              <div className="flex flex-col gap-8">
-                <p className="text-white text-6xl font-medium">
+              <div className="flex flex-col lg:gap-8 gap-4 lg:mb-0 mb-10">
+                <p className="text-white lg:text-6xl md:text-5xl text-4xl font-medium">
                   {t.project.options[1].title.start}{" "}
                   <span className="text-[#6983F7]">
                     {t.project.options[1].title.highlight}
                   </span>
                 </p>
-                <p className="text-white/80 text-xl">
+                <p className="text-white/80 lg:text-xl md:text-lg text-sm">
                   {t.project.options[1].text}
                 </p>
               </div>
             </div>
-            <div className="flex max-w-3/10 flex-col gap-6">
-              <div className="flex flex-col gap-8">
-                <p className="text-white text-6xl font-medium">
+            <div className="flex lg:max-w-3/10 flex-col gap-6 lg:mb-0 mb-10">
+              <div className="flex flex-col lg:gap-8 gap-4">
+                <p className="text-white lg:text-6xl md:text-5xl text-4xl font-medium">
                   {t.project.architecture.title}
                 </p>
-                <p className="text-white/80 text-xl">
+                <p className="text-white/80 lg:text-xl md:text-lg text-sm">
                   {t.project.architecture.description}
                 </p>
               </div>
               {t.project.architecture.texts.map((text, index) => (
-                <p key={index} className="block text-white/80 text-xl">
+                <p
+                  key={index}
+                  className="block text-white/80 lg:text-xl md:text-lg text-sm"
+                >
                   {text}
                 </p>
               ))}
             </div>
-            <div className="flex max-w-3/10 flex-col gap-8">
+            <div className="flex lg:max-w-3/10 flex-col gap-8 lg:mb-0 mb-10">
               <div className="flex flex-col gap-3">
-                <p className="text-white text-6xl font-medium">
+                <p className="text-white lg:text-6xl md:text-5xl text-4xl font-medium">
                   {t.project.stack.title}
                 </p>
               </div>
               {t.project.stack.technologies.map((item, index) => (
                 <div key={index} className="flex flex-col gap-2">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center lg:gap-3 gap-1">
                     <i className={`fa-solid ${item.icon} text-[#6983F7]`}></i>
-                    <p className="text-white text-xl">[ {item.name} ]</p>
+                    <p className="text-white lg:text-xl md:text-lg text-sm">[ {item.name} ]</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {item.technologies.map((tech, techIndex) => (
@@ -254,84 +265,84 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <div className="flex flex-col gap-8 max-w-1/3">
-              <div className="text-white flex items-center gap-3 text-6xl font-medium">
+            <div className="flex flex-col gap-8 lg:max-w-1/3">
+              <div className="text-white flex items-center gap-3 lg:text-6xl md:text-5xl text-4xl font-medium">
                 <p>{t.project.options[2].title.start}</p>
-                <i className="fa-solid fa-star text-[#6983F7] text-5xl"></i>
+                <i className="fa-solid fa-star text-[#6983F7] lg:text-5xl md:text-4xl text-3xl"></i>
               </div>
-              <p className="text-white/80 text-xl">
+              <p className="text-white/80 lg:text-xl md:text-lg text-sm">
                 {t.project.options[2].text}
               </p>
             </div>
           </div>
-          <p className="absolute right-0 bottom-5 text-[250px] translate-x-25 font-black italic bg-linear-to-r from-white/20 to-[#262626]/20 bg-clip-text text-transparent">
+          <p className="absolute right-0 lg:bottom-5 bottom-55 lg:text-[250px] md:text-[200px] text-[80px] md:translate-x-25 translate-x-8 font-black italic bg-linear-to-r from-white/20 to-[#262626]/20 bg-clip-text text-transparent">
             Viva Pay
           </p>
         </div>
         <div
           id="contact"
-          className="flex scroll-mt-20 h-screen px-32 overflow-hidden py-20 gap-20 justify-between items-start w-full bg-[#111] relative"
+          className="flex md:flex-row flex-col-reverse scroll-mt-20 md:h-screen lg:px-32 md:px-16 px-6 overflow-hidden lg:py-20 md:py-10 py-6 lg:gap-20 gap-10 justify-between items-start w-full bg-[#111] relative"
         >
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-8">
-              <p className="text-white text-3xl">
+              <p className="text-white lg:text-3xl md:text-2xl text-xl">
                 {t.contact.contact_info.title}
               </p>
               <div className="flex justify-start items-start gap-3">
-                <div className="size-20 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
-                  <i className="fa-regular fa-envelope text-[#6983F7] text-3xl"></i>
+                <div className="lg:size-20 size-12 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
+                  <i className="fa-regular fa-envelope text-[#6983F7] lg:text-3xl md:text-2xl text-xl"></i>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-white/40 text-xl">
+                  <p className="text-white/40 lg:text-xl md:text-lg text-sm">
                     {t.contact.contact_info.infos[0]}
                   </p>
-                  <p className="text-white/80 text-xl">
+                  <p className="text-white/80 lg:text-xl md:text-lg text-sm">
                     richardwcamargo@gmail.com
                   </p>
                 </div>
               </div>
               <div className="flex justify-start items-start gap-3">
-                <div className="size-20 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
-                  <i className="fa-solid fa-phone text-[#6983F7] text-3xl"></i>
+                <div className="lg:size-20 size-12 bg-linear-to-tr flex justify-center items-center from-[#282828] to-[#191919] rounded-md shadow-md">
+                  <i className="fa-solid fa-phone text-[#6983F7] lg:text-3xl md:text-2xl text-xl"></i>
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-white/40 text-xl">
+                  <p className="text-white/40 lg:text-xl md:text-lg text-sm">
                     {t.contact.contact_info.infos[1]}
                   </p>
-                  <p className="text-white/80 text-xl">+55 (14) 99646-3458</p>
+                  <p className="text-white/80 lg:text-xl md:text-lg text-sm">+55 (14) 99646-3458</p>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-8">
-              <p className="text-white text-3xl">{t.contact.social_info}</p>
+              <p className="text-white lg:text-3xl md:text-2xl text-xl">{t.contact.social_info}</p>
               <div className="flex justify-start items-start gap-4">
                 <a href="https://github.com/RichinW">
-                  <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
-                    <i className="fa-brands fa-github text-[#6983F7] text-3xl"></i>
+                  <div className="lg:size-20 size-12 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                    <i className="fa-brands fa-github text-[#6983F7] lg:text-3xl md:text-2xl text-xl"></i>
                   </div>
                 </a>
                 <a href="https://www.linkedin.com/in/richard-camargo-483079328/">
-                  <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
-                    <i className="fa-brands fa-linkedin-in text-[#6983F7] text-3xl"></i>
+                  <div className="lg:size-20 size-12 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                    <i className="fa-brands fa-linkedin-in text-[#6983F7] lg:text-3xl md:text-2xl text-xl"></i>
                   </div>
                 </a>
                 <a href="https://www.instagram.com/walacerichard/">
-                  <div className="size-20 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
-                    <i className="fa-brands fa-instagram text-[#6983F7] text-3xl"></i>
+                  <div className="lg:size-20 size-12 bg-linear-to-br flex justify-center rounded-full items-center from-[#282828] to-[#191919] shadow-md">
+                    <i className="fa-brands fa-instagram text-[#6983F7] lg:text-3xl md:text-2xl text-xl"></i>
                   </div>
                 </a>
               </div>
             </div>
           </div>
-          <div className="w-2/3 h-full bg-linear-to-r from-[#282828] to-[#191919] rounded-lg py-8 px-12 flex flex-col gap-4">
-            <p className="text-white text-5xl">
+          <div className="md:w-2/3 w-full h-full bg-linear-to-r from-[#282828] to-[#191919] rounded-lg lg:py-8 py-4 lg:px-12 px-6 flex flex-col lg:gap-4 gap-2">
+            <p className="text-white lg:text-5xl md:text-4xl text-2xl font-medium">
               {t.contact.form.title.start}{" "}
               <span className="text-[#6983F7]">
                 {t.contact.form.title.highlight}
               </span>
             </p>
             <Input
-              className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
+              className="outline-none border-none rounded-sm lg:h-12 h-10 bg-linear-to-r from-[#383838] to-[#212121] lg:p-4 p-2 text-white text-md lg:text-lg lg:placeholder:text-lg placeholder:text-md"
               placeholder={t.contact.form.inputs[0]}
               value={formEmail.name}
               onChange={(e) =>
@@ -339,7 +350,7 @@ export default function Home() {
               }
             />
             <Input
-              className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
+              className="outline-none border-none rounded-sm lg:h-12 h-10 bg-linear-to-r from-[#383838] to-[#212121] lg:p-4 p-2 text-white text-md lg:text-lg lg:placeholder:text-lg placeholder:text-md"
               placeholder={t.contact.form.inputs[1]}
               value={formEmail.email}
               onChange={(e) =>
@@ -348,7 +359,7 @@ export default function Home() {
               type="email"
             />
             <Input
-              className="outline-none border-none rounded-sm h-12 bg-linear-to-r from-[#383838] to-[#212121] p-4 text-white text-lg placeholder:text-lg"
+              className="outline-none border-none rounded-sm lg:h-12 h-10 bg-linear-to-r from-[#383838] to-[#212121] lg:p-4 p-2 text-white text-md lg:text-lg lg:placeholder:text-lg placeholder:text-md"
               placeholder={t.contact.form.inputs[2]}
               value={formEmail.subject}
               onChange={(e) =>
@@ -356,7 +367,7 @@ export default function Home() {
               }
             />
             <Textarea
-              className="border-none bg-linear-to-r from-[#383838] to-[#212121] text-lg placeholder:text-lg p-4 h-full text-white"
+              className="outline-none border-none rounded-sm lg:h-12 lg:flex-1 bg-linear-to-r from-[#383838] to-[#212121] lg:p-4 p-2 text-white text-md lg:text-lg lg:placeholder:text-lg placeholder:text-md"
               placeholder={t.contact.form.inputs[3]}
               value={formEmail.message}
               onChange={(e) =>
@@ -365,12 +376,12 @@ export default function Home() {
             ></Textarea>
             <a
               href={`https://mail.google.com/mail/?view=cm&to=${to}&su=${subject}&body=${body}`}
-              className="bg-[#6983F7] flex justify-center items-center p-3 transition-colors hover:bg-[#5a70e0] text-white rounded-sm h-12 w-full"
+              className="bg-[#6983F7] flex justify-center items-center lg:p-3 transition-colors hover:bg-[#5a70e0] text-white rounded-sm lg:h-12 h-10 w-full"
             >
               {t.contact.form.button}
             </a>
           </div>
-          <div className="bg-white/60 size-60 rounded-full blur-3xl absolute bottom-0 left-2/12 transform -translate-x-32 translate-y-30"></div>
+          <div className="bg-white/60 md:block hidden size-60 rounded-full blur-3xl absolute bottom-0 left-2/12 transform -translate-x-32 translate-y-30"></div>
         </div>
       </div>
     </>
