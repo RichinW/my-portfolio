@@ -182,12 +182,12 @@ export default function Home() {
             <p className="lg:text-[200px] md:text-8xl text-7xl text-center font-black italic bg-linear-to-r from-white/30 to-[#242424]/50 bg-clip-text text-transparent">
               Viva Pay
             </p>
-            <div className="text-white/80 flex justify-between items-center">
-              <div className="w-1/10 lg:w-1/4 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
-              <p className="italic lg:text-3xl md:text-xl text-md bg-linear-to-r from-white/30 to-[#333333]/50 bg-clip-text text-transparent">
+            <div className="text-white/80 w-full flex justify-between items-center">
+              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/30 to-[#242424]/50" />
+              <p className="italic lg:text-3xl md:text-xl text-center text-md bg-linear-to-r from-white/30 to-[#333333]/50 bg-clip-text text-transparent">
                 {t.case.title}
               </p>
-              <div className="w-1/10 lg:w-1/4 h-0.5 bg-linear-to-r from-white/20 to-[#242424]/50" />
+              <div className="w-2/10 h-0.5 bg-linear-to-r from-white/20 to-[#242424]/50" />
             </div>
           </div>
           <div className="bg-linear-to-r lg:pt-30 md:pt-20 pt-10 flex justify-center items-center gap-4 from-white/30 to-[#3a3a3a]/60 bg-clip-text text-transparent italic lg:text-xl md:text-lg text-sm">

@@ -27,7 +27,7 @@ export const pt = {
     ],
   },
   case: {
-    title: "Trabalho de conclusão de curso",
+    title: "Projeto final de curso",
   },
   project: {
     options: [
